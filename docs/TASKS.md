@@ -15,7 +15,7 @@
 - [x] CI (archivo escrito), README, guía de IA y `.env.example`.
 
 ## Bloqueos y decisiones del titular
-- [ ] **Dar acceso de escritura a Claude en `letitflow`** (instalar la app de Claude en GitHub): sin eso los pushes son rechazados con 403.
+- [x] Acceso de escritura de Claude a `letitflow` (resuelto 2026-10-21): la rama `claude/pedagogical-platform-ai-c2h2b2` está publicada.
 - [ ] Crear un proyecto Supabase y entregar las claves como variables de entorno.
 - [ ] Proveedor de IA, clave, precios del modelo y tope mensual.
 - [ ] Hosting y términos de uso comercial.
