@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/*
+  Sistema visual: cálido, limpio y legible. Los colores viven como variables para poder
+  cambiar la identidad sin tocar los componentes. Contraste mínimo objetivo: WCAG 2.1 AA.
+*/
+:root {
+  --background: #fbf8f3;
+  --foreground: #1f2933;
+  --surface: #ffffff;
+  --surface-muted: #f3eee6;
+  --border: #e3dccf;
+  --muted-foreground: #5b6670;
+  --primary: #1f6f5f;
+  --primary-foreground: #ffffff;
+  --accent: #8a4700;
+  --accent-soft: #fdf0dc;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --success: #1a7f4b;
+  --success-soft: #e6f5ec;
+  --ring: #1f6f5f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #14181b;
+    --foreground: #eef1f3;
+    --surface: #1c2226;
+    --surface-muted: #232a2f;
+    --border: #333c43;
+    --muted-foreground: #a4afb7;
+    --primary: #5ec3ad;
+    --primary-foreground: #0d1f1b;
+    --accent: #f0a85a;
+    --accent-soft: #3a2a14;
+    --danger: #ff8a7c;
+    --danger-soft: #3a1b17;
+    --success: #6fd6a0;
+    --success-soft: #16301f;
+    --ring: #5ec3ad;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-ring: var(--ring);
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
