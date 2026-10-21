@@ -43,6 +43,35 @@ Formato: contexto, decisión, consecuencias. Las decisiones del titular del proy
 ## D-010 — Sin datos reales de estudiantes en desarrollo (asistente, 2026-10-21)
 **Decisión.** Solo datos sintéticos hasta completar la revisión legal bajo la Ley 21.719.
 
+## D-011 — Sin Cache Components (asistente, 2026-10-21)
+**Contexto.** `create-next-app` activa `cacheComponents` y `partialPrefetching`. Con ellos, toda lectura de sesión debe ir tras un límite `Suspense`.
+**Decisión.** Desactivarlos. La aplicación es privada y por usuario, así que prerenderizar aporta poco; todo se renderiza por solicitud.
+**Consecuencias.** Más simple y predecible. Reversible si más adelante se quiere optimizar páginas públicas.
+
+## D-012 — Tipografía del sistema (asistente, 2026-10-21)
+**Decisión.** No usar `next/font/google`: evita descargar fuentes en el build y que el navegador contacte a un tercero.
+
+## D-013 — CSP con nonce por solicitud en el proxy (asistente, 2026-10-21)
+**Decisión.** `src/proxy.ts` (Next 16 renombró «middleware» a «proxy») genera un nonce por solicitud y fija la CSP; las demás cabeceras de seguridad son estáticas en `next.config.ts`.
+**Consecuencias.** Sin `unsafe-inline` ni `unsafe-eval` en producción. Obliga a renderizar por solicitud (ver D-011).
+
+## D-014 — Dos niveles de comprobación de sesión (asistente, 2026-10-21)
+**Decisión.** El proxy solo usa los claims del JWT (`getClaims`) para redirigir de forma optimista. La autoridad es `getUser()` en el servidor (`src/lib/auth/session.ts`) y, sobre todo, la RLS de la base de datos.
+
+## D-015 — Permisos mínimos y registros inmutables (asistente, 2026-10-21)
+**Decisión.**
+- En cada tabla se revoca todo a `anon` y `authenticated` y se concede de forma explícita, incluso por columna (p. ej. `workspace_id` de un curso no se puede cambiar).
+- `ai_usage` solo admite inserciones con la clave de servicio, para que nadie falsee su consumo y eluda el tope.
+- `audit_log` es solo de inserción (trigger) y no tiene claves foráneas, para sobrevivir al borrado de cuentas y espacios; la purga por retención debe activarse de forma explícita.
+- Un espacio nunca queda sin propietario, y el espacio personal no admite otros miembros.
+
+## D-016 — Salidas de IA estructuradas y sin precios supuestos (asistente, 2026-10-21)
+**Decisión.** El adaptador de Claude obliga al modelo a usar una herramienta con el esquema de la tarea y revalida con zod. No hay precios por defecto: sin `AI_PRICE_*` el adaptador se niega a operar, porque no se puede limitar un costo que no se estima.
+**Estado.** Probado solo con un cliente simulado; falta una llamada de verificación con clave real.
+
+## D-017 — Componentes de UI escritos a mano (asistente, 2026-10-21)
+**Decisión.** Botón y tarjeta al estilo shadcn/ui, sin usar su CLI. Radix se incorporará cuando haya diálogos, menús o selectores que lo justifiquen.
+
 ## Decisiones pendientes del titular
 1. Crear un proyecto Supabase (región) y entregar las claves como variables de entorno.
 2. Proveedor de IA, clave y tope mensual.

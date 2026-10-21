@@ -14,7 +14,7 @@ Estado: borrador de Fase 0. Fecha: 2026-10-21.
 | Capa | Decisión |
 |---|---|
 | App | Next.js 16 (App Router) + React + TypeScript, gestionado con pnpm |
-| UI | Tailwind CSS + componentes accesibles basados en Radix (estilo shadcn/ui) |
+| UI | Tailwind CSS + componentes accesibles al estilo shadcn/ui, escritos a mano (Radix se suma cuando haga falta; ver D-017) |
 | Datos | Supabase: Postgres, Auth y Storage |
 | Migraciones | SQL versionado en `supabase/migrations` |
 | Validación | zod en formularios, rutas de API y salidas de IA |

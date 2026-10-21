@@ -6,8 +6,8 @@ Fecha: 2026-10-21. Las fases son orientativas y se ajustan según las dependenci
 
 | Fase | Contenido | Estado |
 |---|---|---|
-| 0 | Investigación y especificación (`/docs`) | En curso |
-| 0b | Esqueleto: autenticación, espacios, base con RLS, capa de IA, navegación, CI | En curso |
+| 0 | Investigación y especificación (`/docs`) | Hecha (borrador, a revisar por el titular) |
+| 0b | Esqueleto: autenticación, espacios, base con RLS, capa de IA, navegación, CI | Construida y probada localmente; falta probar con Supabase y claves reales (ver `TASKS.md`) |
 | 1 | MVP pedagógico para 1° básico: planificación, clase con IA, guía y presentación, evaluación con tabla de especificaciones, biblioteca personal, leccionario | Pendiente |
 | 2 | Inclusión (adecuaciones), corrección asistida de escaneos, retroalimentación, análisis y refuerzo | Pendiente |
 | 3 | Cursos y estudiantes, asistencia, informes y borradores a apoderados, pizarra interactiva | Pendiente |
